@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-greet-service
+  namespace: simple-greet-ns
+spec:
+  selector:
+    app: spring-boot-k8s #to define the pods
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 9191
+  type: NodePort

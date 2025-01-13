@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-greet-deployment
+  namespace: simple-greet-ns
+spec:
+  selector:
+    matchLabels:
+      app: spring-boot-k8s #to define the pods
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: spring-boot-k8s
+    spec:
+      containers:
+        - name: simple-greet-container
+          image: simple-greet-new:2.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9191
+
